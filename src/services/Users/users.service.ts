@@ -12,7 +12,7 @@ const createUserService = async (
 
   const createdUser = await knexInstance("users").where({ id: userId }).first();
 
-  return createdUser;
+  return returnedCreateUserSchema.parse(createdUser);
 };
 
 export { createUserService };

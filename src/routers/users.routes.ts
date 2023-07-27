@@ -9,11 +9,11 @@ import { createUserSchema } from "../schemas/users.schema";
 
 const userRoutes: Router = Router();
 
-userRoutes.get("", readAllUsersController);
 userRoutes.post(
   "",
   ensureBodyIsValidMiddleware(createUserSchema),
   createUserController
 );
+userRoutes.get("", readAllUsersController);
 
 export default userRoutes;
