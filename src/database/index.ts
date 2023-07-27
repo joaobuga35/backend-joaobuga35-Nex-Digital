@@ -1,5 +1,6 @@
+import { Knex } from "knex";
 import knexConfig from "../../knexfile";
 
-const developmentConfig = knexConfig.development;
+const knexInstance: Knex = require("knex")(knexConfig.development);
 
-export { developmentConfig };
+export { knexInstance };
