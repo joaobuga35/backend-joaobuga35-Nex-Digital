@@ -7,9 +7,10 @@ import {
   updatedUsersController,
 } from "../controllers/user.controller";
 import ensureBodyIsValidMiddleware from "../middlewares/ensure.validated.body";
-import { createUserSchema } from "../schemas/users.schema";
+import { createUserSchema, updateUserSchema } from "../schemas/users.schema";
 import ensureEmailExists from "../middlewares/ensure.email";
 import ensureCpfExists from "../middlewares/ensure.cpf";
+import ensureIDExists from "../middlewares/ensure.id.exists";
 
 const userRoutes: Router = Router();
 
@@ -21,7 +22,14 @@ userRoutes.post(
   createUserController
 );
 userRoutes.get("", readAllUsersController);
-userRoutes.patch("/:id", updatedUsersController);
-userRoutes.delete("/:id", deleteUsersController);
+userRoutes.patch(
+  "/:id",
+  ensureBodyIsValidMiddleware(updateUserSchema),
+  ensureIDExists,
+  ensureEmailExists,
+  ensureCpfExists,
+  updatedUsersController
+);
+userRoutes.delete("/:id", ensureIDExists, deleteUsersController);
 
 export default userRoutes;

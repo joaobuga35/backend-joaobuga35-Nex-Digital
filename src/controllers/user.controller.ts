@@ -29,7 +29,7 @@ const deleteUsersController = async (req: Request, res: Response) => {
 
   await deleteUserService(id);
 
-  return res.status(204);
+  return res.status(204).json();
 };
 
 export {
