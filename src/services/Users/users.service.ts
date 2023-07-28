@@ -10,7 +10,7 @@ const createUserService = async (
 ): Promise<IReturnCreateUser> => {
   const [userId] = await knexInstance("users").insert(userData);
 
-  const createdUser = await knexInstance("users").where({ id: userId }).first();
+  const createdUser = await knexInstance("users").where("id", userId).first();
 
   return returnedCreateUserSchema.parse(createdUser);
 };
