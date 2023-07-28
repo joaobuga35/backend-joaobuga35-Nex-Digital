@@ -19,6 +19,12 @@ const returnedCreateUserSchema = createUserSchema
   })
   .omit({ password: true });
 
+const updateUserSchema = createUserSchema.partial().omit({ admin: true });
 const allUsersSchema = z.array(returnedCreateUserSchema);
 
-export { createUserSchema, returnedCreateUserSchema, allUsersSchema };
+export {
+  createUserSchema,
+  returnedCreateUserSchema,
+  allUsersSchema,
+  updateUserSchema,
+};
