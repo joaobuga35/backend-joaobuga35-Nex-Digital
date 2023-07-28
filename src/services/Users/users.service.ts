@@ -8,9 +8,15 @@ import { returnedCreateUserSchema } from "../../schemas/users.schema";
 const createUserService = async (
   userData: ICreateUser
 ): Promise<IReturnCreateUser> => {
-  const [userId] = await knexInstance("users").insert(userData);
+  await knexInstance("users").insert(userData);
 
-  const createdUser = await knexInstance("users").where("id", userId).first();
+  const createdUser = await knexInstance("users")
+    .where("cpf", userData.cpf)
+    .first();
+
+  await knexInstance("transactions")
+    .where("cpf", userData.cpf)
+    .update({ user_id: createdUser.id });
 
   return returnedCreateUserSchema.parse(createdUser);
 };

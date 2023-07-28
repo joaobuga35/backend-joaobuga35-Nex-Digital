@@ -3,7 +3,7 @@ import { hashSync } from "bcryptjs";
 
 const createUserSchema = z.object({
   name: z.string().min(3).max(45),
-  cpf: z.string().max(11),
+  cpf: z.string().max(14),
   email: z.string().email(),
   password: z.string().transform((pass) => {
     return hashSync(pass, 10);

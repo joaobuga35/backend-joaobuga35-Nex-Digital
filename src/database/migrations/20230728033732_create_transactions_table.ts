@@ -5,7 +5,7 @@ export async function up(knex: Knex): Promise<void> {
     table.uuid("id").primary().defaultTo(knex.raw("(UUID())"));
     table.string("cpf").notNullable();
     table.text("description").notNullable();
-    table.timestamp("transaction_date").notNullable();
+    table.string("transaction_date").notNullable();
     table.string("points_value").notNullable();
     table.decimal("value", 10, 2).notNullable();
     table.string("status").notNullable();
