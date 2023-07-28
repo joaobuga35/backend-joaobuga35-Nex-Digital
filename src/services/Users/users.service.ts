@@ -15,4 +15,4 @@ const createUserService = async (
   return returnedCreateUserSchema.parse(createdUser);
 };
 
-export { createUserService };
+export default createUserService;

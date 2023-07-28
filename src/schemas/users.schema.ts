@@ -19,4 +19,6 @@ const returnedCreateUserSchema = createUserSchema
   })
   .omit({ password: true });
 
-export { createUserSchema, returnedCreateUserSchema };
+const allUsersSchema = z.array(returnedCreateUserSchema);
+
+export { createUserSchema, returnedCreateUserSchema, allUsersSchema };
