@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { knexInstance } from "../database";
 import createUserService from "../services/Users/users.service";
 import readUsersService from "../services/Users/readUsers.service";
 import updateUserService from "../services/Users/updateUsers.service";
