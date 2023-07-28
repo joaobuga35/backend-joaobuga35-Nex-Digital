@@ -9,11 +9,7 @@ export async function up(knex: Knex): Promise<void> {
     table.string("points_value").notNullable();
     table.decimal("value", 10, 2).notNullable();
     table.string("status").notNullable();
-    table
-      .string("user_id")
-      .references("users.id")
-      .notNullable()
-      .onDelete("CASCADE");
+    table.string("user_id").references("users.id").onDelete("CASCADE");
   });
 }
 
