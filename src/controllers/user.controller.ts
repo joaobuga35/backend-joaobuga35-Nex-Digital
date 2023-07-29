@@ -3,6 +3,7 @@ import createUserService from "../services/Users/users.service";
 import readUsersService from "../services/Users/readUsers.service";
 import updateUserService from "../services/Users/updateUsers.service";
 import deleteUserService from "../services/Users/deleteUsers.service";
+import filterTransactionsUsersService from "../services/Users/filterUsers.service";
 
 const createUserController = async (req: Request, res: Response) => {
   const newUser = await createUserService(req.body);
@@ -13,6 +14,14 @@ const createUserController = async (req: Request, res: Response) => {
 const readAllUsersController = async (req: Request, res: Response) => {
   const users = await readUsersService();
   return res.status(200).json(users);
+};
+
+const filterTransactionsUsersController = async (
+  req: Request,
+  res: Response
+) => {
+  const filterUserTransaction = await filterTransactionsUsersService(req);
+  return res.status(200).json(filterUserTransaction);
 };
 
 const updatedUsersController = async (req: Request, res: Response) => {
@@ -34,6 +43,7 @@ const deleteUsersController = async (req: Request, res: Response) => {
 export {
   createUserController,
   readAllUsersController,
+  filterTransactionsUsersController,
   updatedUsersController,
   deleteUsersController,
 };

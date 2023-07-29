@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import createTransactionService from "../services/Transactions/createTransaction.service";
-import { knexInstance } from "../database";
 import readTransactionsService from "../services/Transactions/readTransactions.service";
 
 const createTransactionController = async (req: Request, res: Response) => {

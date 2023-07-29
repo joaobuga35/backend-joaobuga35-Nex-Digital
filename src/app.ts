@@ -14,4 +14,4 @@ app.use("/transactions", transactionRoutes);
 
 app.use(handleError);
 
-app.listen(3000, () => console.log("server is running"));
+app.listen(3000, () => console.log("Server is running!!"));

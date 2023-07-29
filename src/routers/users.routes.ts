@@ -3,6 +3,7 @@ import { knexInstance } from "../database";
 import {
   createUserController,
   deleteUsersController,
+  filterTransactionsUsersController,
   readAllUsersController,
   updatedUsersController,
 } from "../controllers/user.controller";
@@ -28,6 +29,12 @@ userRoutes.get(
   ensureTokenIsValid,
   ensureADMisValid,
   readAllUsersController
+);
+userRoutes.get(
+  "/:id",
+  ensureTokenIsValid,
+  ensureIDExists,
+  filterTransactionsUsersController
 );
 userRoutes.patch(
   "/:id",
