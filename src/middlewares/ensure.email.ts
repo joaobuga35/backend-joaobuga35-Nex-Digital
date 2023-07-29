@@ -3,7 +3,7 @@ import { knexInstance } from "../database";
 import { AppError } from "../errors";
 const ensureEmailExists = async (
   req: Request,
-  resp: Response,
+  res: Response,
   next: NextFunction
 ): Promise<void> => {
   const { email } = req.body;

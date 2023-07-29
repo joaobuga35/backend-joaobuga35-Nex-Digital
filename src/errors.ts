@@ -13,23 +13,23 @@ class AppError extends Error {
 const handleError = (
   error: any,
   req: Request,
-  resp: Response,
+  res: Response,
   next: NextFunction
 ) => {
   if (error instanceof AppError) {
-    return resp.status(error.statusCode).json({
+    return res.status(error.statusCode).json({
       message: error.message,
     });
   }
 
   if (error instanceof ZodError) {
-    return resp.status(400).json({
+    return res.status(400).json({
       message: error.flatten().fieldErrors,
     });
   }
 
   console.log(error);
-  return resp.status(500).json({
+  return res.status(500).json({
     message: "Internal Server Error",
   });
 };

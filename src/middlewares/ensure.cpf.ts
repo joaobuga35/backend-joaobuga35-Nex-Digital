@@ -4,7 +4,7 @@ import { AppError } from "../errors";
 
 const ensureCpfExists = async (
   req: Request,
-  resp: Response,
+  res: Response,
   next: NextFunction
 ): Promise<void> => {
   const { cpf } = req.body;
