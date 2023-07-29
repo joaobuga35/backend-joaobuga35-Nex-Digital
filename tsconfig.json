@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
-    "typeRoots": ["node_modules/@types"],
+    "typeRoots": ["src/@types","node_modules/@types"],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -12,6 +12,6 @@
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false
   },
-  "include": ["src"],
+  "include": ["src", "knexfile.ts"],
   "exclude": ["node_modules"]
 }
