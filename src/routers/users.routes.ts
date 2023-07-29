@@ -11,6 +11,8 @@ import { createUserSchema, updateUserSchema } from "../schemas/users.schema";
 import ensureEmailExists from "../middlewares/ensure.email";
 import ensureCpfExists from "../middlewares/ensure.cpf";
 import ensureIDExists from "../middlewares/ensure.id.exists";
+import ensureTokenIsValid from "../middlewares/ensure.token.isValid";
+import ensureADMisValid from "../middlewares/ensure.adm.isValid";
 
 const userRoutes: Router = Router();
 
@@ -21,7 +23,12 @@ userRoutes.post(
   ensureCpfExists,
   createUserController
 );
-userRoutes.get("", readAllUsersController);
+userRoutes.get(
+  "",
+  ensureTokenIsValid,
+  ensureADMisValid,
+  readAllUsersController
+);
 userRoutes.patch(
   "/:id",
   ensureBodyIsValidMiddleware(updateUserSchema),
