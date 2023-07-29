@@ -39,11 +39,19 @@ userRoutes.get(
 userRoutes.patch(
   "/:id",
   ensureBodyIsValidMiddleware(updateUserSchema),
+  ensureTokenIsValid,
+  ensureADMisValid,
   ensureIDExists,
   ensureEmailExists,
   ensureCpfExists,
   updatedUsersController
 );
-userRoutes.delete("/:id", ensureIDExists, deleteUsersController);
+userRoutes.delete(
+  "/:id",
+  ensureTokenIsValid,
+  ensureADMisValid,
+  ensureIDExists,
+  deleteUsersController
+);
 
 export default userRoutes;
